@@ -369,6 +369,12 @@ var setupSize = function() {
     $(window).resize(resize);
 };
 
+// Model icon tooltips
+$('.model-icon').tooltip({
+    placement: 'bottom',
+    trigger: 'hover'
+});
+
 // On page load
 $(document).ready(function() {
     // Set heights

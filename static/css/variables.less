@@ -47,10 +47,11 @@
 @sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
 @serifFontFamily:       Georgia, "Times New Roman", Times, serif;
 @monoFontFamily:        Monaco, Menlo, Consolas, "Courier New", monospace;
-@chatypeFontFamily:		"ChatypeB2.1ThinThin", "Courier New", monospace;
+@chatypeThinFontFamily:		"Chatype Thin", "Courier New", monospace;
+@chatypeBoldFontFamily:		"Chatype Bold", "Courier New", monospace;
 
 @font-face {
-    font-family: 'ChatypeB2.1ThinThin';
+    font-family: 'Chatype Thin';
     src: url('font/chatypeb2.1thin-webfont.eot');
     src: url('font/chatypeb2.1thin-webfont.eot?#iefix') format('embedded-opentype'),
          url('font/chatypeb2.1thin-webfont.woff') format('woff'),
@@ -59,8 +60,18 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Chatype Bold';
+    src: url('font/chatypeb2.1bold-webfont.eot');
+    src: url('font/chatypeb2.1bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/chatypeb2.1bold-webfont.woff') format('woff'),
+         url('font/chatypeb2.1bold-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 @baseFontSize:          14px;
-@baseFontFamily:        @chatypeFontFamily;
+@baseFontFamily:        @chatypeThinFontFamily;
 @baseLineHeight:        20px;
 @altFontFamily:         @serifFontFamily;
 
