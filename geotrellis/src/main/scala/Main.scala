@@ -73,5 +73,3 @@ case class AsPolygon[D](g:Op[Geometry[D]]) extends Op1(g) ({
   g =>
     Result(Polygon[Int](g.asInstanceOf[Polygon[D]].geom,0))
 })
-
-

@@ -3,7 +3,7 @@
     "weightedOverlay": {
         "numBreaks" : "10",
         "opacity"   : "0.75",
-        "ramp"      : "yellow-to-red-heatmap",
+        "ramp"      : "blue-to-yellow-to-red-heatmap",
         "layers" : [ { "name" : "ImperviousSurfaces_Barren Lands_Open Water", 
                        "weight" : "-5",
                        "display" : "High Intensity Development, Impervious Surfaces, or Open Water" },

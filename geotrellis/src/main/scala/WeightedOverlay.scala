@@ -23,8 +23,8 @@ import scala.collection.JavaConversions._
 @Path("/wo")
 class WeightedOverlay {
   final val defaultBox = "-9634947.090,4030964.877,-9359277.090,4300664.877"
+  // #ff0000 = red, 
   final val defaultColors = "ff0000,ffff00,00ff00,0000ff"
-
   @GET
   def get(
     @DefaultValue(defaultBox) @QueryParam("bbox") bbox:String,
