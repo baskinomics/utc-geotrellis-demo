@@ -2,7 +2,7 @@
 html(lang='en')
   head
     meta(charset='utf-8')
-    title Civitas Demo
+    title Civitas
     meta(name='description', content='GeoTrellis features demo.')
     meta(name='author', content='Azavea')
     link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,700', rel='stylesheet', type='text/css')
@@ -61,8 +61,31 @@ html(lang='en')
               span.icon-bar
               span.icon-bar
               span.icon-bar
-            a.brand(href='#') Thrive 2055
+            a.brand(href='#') Civitas
             .nav-collapse.collapse
+              ul.nav.pull-left
+                li 
+                  a(href='#')
+                    i.icon-leaf.icon-large
+                li 
+                  a(href='#') 
+                    i.icon-beaker.icon-large
+                li 
+                  a(href='#')
+                    i.icon-globe.icon-large
+                li 
+                  a(href='#')
+                    i.icon-truck.icon-large
+                li 
+                  a(href='#')
+                    i.icon-bar-chart.icon-large
+                li 
+                  a(href='#')
+                    i.icon-lightbulb.icon-large
+                li 
+                  a(href='#')
+                    i.icon-beer.icon-large
+
               ul.nav.pull-right
                 li
                   a(href='https://twitter.com/Thrive2055')
@@ -77,8 +100,7 @@ html(lang='en')
                   a(href='#aboutModal', data-toggle='modal')
                     | &#32; &#32;
                     i.icon-info-sign
-            //
-              /.nav-collapse 
+
       .container-fluid
         .row-fluid
           .span8
@@ -115,7 +137,7 @@ html(lang='en')
           #sidebar.span4
             ul.nav.nav-tabs
               li.active
-                a(href='#parameters', data-toggle='tab') Models
+                a(href='#parameters', data-toggle='tab') Parameters
                   | &#32; &#32;
                   i.icon-cogs
               li
@@ -124,7 +146,7 @@ html(lang='en')
                   i.icon-bar-chart
             #tabBody.tab-content
               #parameters.tab-pane.active
-                //
+                // 
                    Parameter 1 
                 .well
                   h4.slider-label Parameter 1
