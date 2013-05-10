@@ -202,7 +202,7 @@ html(lang='en')
                   .slider
               // Summary Pane
               #summary.tab-pane
-                h3 Summary
+                h3#helpTourFour Summary
                 table#summary-data.table.table-striped.summary-table
                   tbody
                     tr
@@ -260,12 +260,13 @@ html(lang='en')
 
     // Bootstrap Tour
     ol#helpTour(display-style='none')
-      li(data-target='#helpTourOne', data-placement='bottom', data-title='Welcome!') To get started select one model.
-      li(data-target='#helpTourTwo', data-placement='bottom', data-title='Configure') Next, toggle the model parameters. 
-      li(data-target='.leaflet-draw-draw-polygon', data-placement='bottom', data-title='Define') Draw a Polygon
-      li(data-target='#helpTourFour', data-placement='bottom', data-title='Review') Review the results summary.
+      li(data-target='#helpTourOne', data-placement='bottom', data-title='Step One: Select') Begin by selecting a model.
+      li(data-target='#helpTourTwo', data-placement='bottom', data-title='Step Two: Configure') Toggle the model parameters to match your values. 
+      li(data-target='#map', data-placement='right', data-title='Step Three: Discover') Use the polygon control located on the left side of the map to draw a polygon and summerize the results.
 
       script
+        //$('.leaflet-draw-draw-polygon').attr("id", "helpTourThree");
+
         $('#starttour').click(function (e) {
           e.preventDefault();
           $('#overlay').show();

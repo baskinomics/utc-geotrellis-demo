@@ -31,7 +31,7 @@ var map = (function() {
     m.setView([34.76192255039478,-85.35140991210938], 9);
 
     selected.addTo(m);
-
+    // Add geolocation control
     L.control.locate().addTo(m);
     m.lc = L.control.layers(baseLayers).addTo(m);
     return m;

@@ -168,7 +168,7 @@
               </div>
               <!-- Summary Pane-->
               <div id="summary" class="tab-pane">
-                <h3>Summary</h3>
+                <h3 id="helpTourFour">Summary</h3>
                 <table id="summary-data" class="table table-striped summary-table">
                   <tbody>
                     <tr></tr>
@@ -207,11 +207,12 @@
     <li id="colorRampTemplate" role="presentation" style="display: none;"><a role="menuitem" tabindex="-1" href="#" onclick="return false;"><img role="menuitem" tabindex="-1" src="img/ramps/blue-to-orange.png"></a></li>
     <!-- Bootstrap Tour-->
     <ol id="helpTour" display-style="none">
-      <li data-target="#helpTourOne" data-placement="bottom" data-title="Welcome!">To get started select one model.</li>
-      <li data-target="#helpTourTwo" data-placement="bottom" data-title="Configure">Next, toggle the model parameters. </li>
-      <li data-target=".leaflet-draw-draw-polygon" data-placement="bottom" data-title="Define">Draw a Polygon</li>
-      <li data-target="#helpTourFour" data-placement="bottom" data-title="Review">Review the results summary.</li>
+      <li data-target="#helpTourOne" data-placement="bottom" data-title="Step One: Select">Begin by selecting a model.</li>
+      <li data-target="#helpTourTwo" data-placement="bottom" data-title="Step Two: Configure">Toggle the model parameters to match your values. </li>
+      <li data-target="#map" data-placement="right" data-title="Step Three: Discover">Use the polygon control located on the left side of the map to draw a polygon and summerize the results.</li>
       <script>
+        //$('.leaflet-draw-draw-polygon').attr("id", "helpTourThree");
+        
         $('#starttour').click(function (e) {
           e.preventDefault();
           $('#overlay').show();
