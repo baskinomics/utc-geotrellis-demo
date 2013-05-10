@@ -10,7 +10,7 @@ UTC will continue to serve as a regional clearinghouse for geospatial data, mode
 
 For more information on the UTC project contact:
 
-Andy Carrol <br/>
+Andy Carroll <br/>
 GIS Manager <br/>
 Center for Academix and Innovative Technologies
 
