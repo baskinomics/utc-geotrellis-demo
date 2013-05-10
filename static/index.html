@@ -3,10 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>Civitas</title>
-    <meta name="description" content="GeoTrellis features demo.">
-    <meta name="author" content="Azavea">
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <meta name="description" content="UTC GeoTrellis Features Demo">
+    <meta name="author" content="UTC">
+    <!-- Move to separate CSS file-->
     <style type="text/css">
       body {
       padding-top: 60px;
@@ -31,36 +30,54 @@
       }
       @media (max-width: 980px) {
       /* Enable use of floated navbar text */
-      .navbar-text.pull-right {
-      float: none;
-      padding-left: 5px;
-      padding-right: 5px;
+        .navbar-text.pull-right {
+        float: none;
+        padding-left: 5px;
+        padding-right: 5px;
+        }
       }
+      
+      #helpTour {
+        display: none;
       }
+      
     </style>
+    <!-- CSS References-->
+    <!-- Frontend Frameworks-->
+    <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/leaflet.css" rel="stylesheet">
-    <link href="css/leaflet.draw.css" rel="stylesheet"><!--[if lte IE 8]>
+    <link href="css/leaflet.draw.css" rel="stylesheet">
+    <link href="css/L.Control.Locate.css" rel="stylesheet"><!--[if lte IE 8]>
     <link rel="stylesheet" href="../dist/leaflet.ie.css"><![endif]-->
+    <!-- JQuery -->
     <link href="css/jquery-ui.css" rel="stylesheet">
     <link href="css/application.css" rel="stylesheet">
+    <!-- Javascript References-->
+    <!-- Leaflet and plugins-->
     <script src="js/leaflet-src.js"></script>
     <script src="js/leaflet.draw.js"></script>
+    <script src="js/L.Control.Locate.js"></script>
     <script src="js/geojson.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+    <!-- JQuery Javascript-->
     <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/jquery-ui-1.10.0.min.js"></script>
-    <script src="js/bootstrap.min.js"></script><!--[if lt IE 9]>
+    <!-- Front end frameworks and components-->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-joyride.js"></script><!--[if lt IE 9]>
     <script src="../assets/js/html5shiv.js"></script><![endif]-->
   </head>
   <body>
+    <!-- Main Content-->
     <div id="main">
+      <!-- Navigation Bar-->
       <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
           <div class="container-fluid">
-            <button type="button" data-toggle="collapse" data-target=".nav-collapse" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#" class="brand">Civitas</a>
+            <button type="button" data-toggle="collapse" data-target=".nav-collapse" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="https://github.com/sbaskin89/utc-geotrellis-demo" class="brand">Civitas</a>
             <div class="nav-collapse collapse">
               <ul class="nav pull-left">
-                <li> <a href="#" data-toggle="tooltip" title="Agriculture and Forestry Model" class="model-icon"><i class="icon-leaf icon-large"></i></a></li>
+                <li id="helpTourOne"><a href="#" data-toggle="tooltip" title="Agriculture and Forestry Model" class="model-icon"><i class="icon-leaf icon-large"></i></a></li>
                 <li> <a href="#" data-toggle="tooltip" title="Water Quality" class="model-icon"> <i class="icon-beaker icon-large"></i></a></li>
                 <li> <a href="#" data-toggle="tooltip" title="Biodiversity and Wildlife" class="model-icon"><i class="icon-globe icon-large"></i></a></li>
                 <li> <a href="#" data-toggle="tooltip" title="Transportation" class="model-icon"><i class="icon-truck icon-large"></i></a></li>
@@ -73,11 +90,13 @@
                     <!-- https://www.facebook.com/Thrive2055--></a></li>
                 <li><a href="https://www.facebook.com/Thrive2055">&#32; &#32;<i class="icon-facebook-sign"></i></a></li>
                 <li><a href="#aboutModal" data-toggle="modal">&#32; &#32;<i class="icon-info-sign"></i></a></li>
+                <li><a id="starttour" href="#">&#32; &#32;<i class="icon-question-sign"></i></a></li>
               </ul>
             </div>
           </div>
         </div>
       </div>
+      <!-- Content Sections-->
       <div class="container-fluid">
         <div class="row-fluid">
           <div class="span8">
@@ -111,7 +130,7 @@
           </div><!--/map-->
           <div id="sidebar" class="span4">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#parameters" data-toggle="tab">
+              <li class="active"><a id="helpTourTwo" href="#parameters" data-toggle="tab">
                   Parameters
                   &#32; &#32;<i class="icon-cogs"></i></a></li>
               <li><a href="#summary" data-toggle="tab">
@@ -186,5 +205,32 @@
       </div>
     </div>
     <li id="colorRampTemplate" role="presentation" style="display: none;"><a role="menuitem" tabindex="-1" href="#" onclick="return false;"><img role="menuitem" tabindex="-1" src="img/ramps/blue-to-orange.png"></a></li>
+    <!-- Bootstrap Tour-->
+    <ol id="helpTour" display-style="none">
+      <li data-target="#helpTourOne" data-placement="bottom" data-title="Welcome!">To get started select one model.</li>
+      <li data-target="#helpTourTwo" data-placement="bottom" data-title="Configure">Next, toggle the model parameters. </li>
+      <li data-target=".leaflet-draw-draw-polygon" data-placement="bottom" data-title="Define">Draw a Polygon</li>
+      <li data-target="#helpTourFour" data-placement="bottom" data-title="Review">Review the results summary.</li>
+      <script>
+        $('#starttour').click(function (e) {
+          e.preventDefault();
+          $('#overlay').show();
+          $(this).BootJoyride({
+            'cookieMonster': false,           // true/false for whether cookies are used
+            'cookieName': 'myHomepageTour',  // choose your own cookie name
+            'cookieDomain': false,           // set to false or yoursite.com
+            'tipContent': '#helpTour',    // The ID of the <ol> used for content
+            'postRideCallback': endtour,      // A method to call once the tour closes
+            'postStepCallback': $.noop,      // A method to call after each step
+            'nextOnClose': false,            // If cookies are enabled, increment the current step on close
+            'debug': false
+          });  
+        });
+        
+        function endtour() {
+          $('#overlay').hide();
+        }
+      </script>
+    </ol>
   </body>
 </html>

@@ -3,10 +3,10 @@ html(lang='en')
   head
     meta(charset='utf-8')
     title Civitas
-    meta(name='description', content='GeoTrellis features demo.')
-    meta(name='author', content='Azavea')
-    link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,700', rel='stylesheet', type='text/css')
-    link(href='css/bootstrap.css', rel='stylesheet')
+    meta(name='description', content='UTC GeoTrellis Features Demo')
+    meta(name='author', content='UTC')
+        
+    // Move to separate CSS file
     style(type='text/css')
       body {
       padding-top: 60px;
@@ -31,29 +31,53 @@ html(lang='en')
       }
       @media (max-width: 980px) {
       /* Enable use of floated navbar text */
-      .navbar-text.pull-right {
-      float: none;
-      padding-left: 5px;
-      padding-right: 5px;
+        .navbar-text.pull-right {
+        float: none;
+        padding-left: 5px;
+        padding-right: 5px;
+        }
       }
+
+      #helpTour {
+        display: none;
       }
+
+    // CSS References
+    // Frontend Frameworks
+    link(href='css/bootstrap.css', rel='stylesheet')
     link(href='css/leaflet.css', rel='stylesheet')
     link(href='css/leaflet.draw.css', rel='stylesheet')
+    link(href='css/L.Control.Locate.css', rel='stylesheet')
+
     //if lte IE 8
       link(rel='stylesheet', href='../dist/leaflet.ie.css')
+
+    // JQuery 
     link(href='css/jquery-ui.css', rel='stylesheet')
     link(href='css/application.css', rel='stylesheet')
+    // Javascript References
+
+    // Leaflet and plugins
     script(src='js/leaflet-src.js')
     script(src='js/leaflet.draw.js')
+    script(src='js/L.Control.Locate.js')
     script(src='js/geojson.js')
     script(src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js')
+    
+    // JQuery Javascript
     script(src='js/jquery-1.9.1.min.js')
     script(src='js/jquery-ui-1.10.0.min.js')
+
+    // Front end frameworks and components
     script(src='js/bootstrap.min.js')
+    script(src='js/bootstrap-joyride.js')
+
     //if lt IE 9
       script(src='../assets/js/html5shiv.js')
   body
+    // Main Content
     #main
+      // Navigation Bar
       .navbar.navbar-inverse.navbar-fixed-top
         .navbar-inner
           .container-fluid
@@ -61,10 +85,10 @@ html(lang='en')
               span.icon-bar
               span.icon-bar
               span.icon-bar
-            a.brand(href='#') Civitas
+            a.brand(href='https://github.com/sbaskin89/utc-geotrellis-demo') Civitas
             .nav-collapse.collapse
               ul.nav.pull-left
-                li 
+                li#helpTourOne
                   a(href='#', data-toggle='tooltip', title='Agriculture and Forestry Model').model-icon
                     i.icon-leaf.icon-large
                 li 
@@ -100,7 +124,11 @@ html(lang='en')
                   a(href='#aboutModal', data-toggle='modal')
                     | &#32; &#32;
                     i.icon-info-sign
-
+                li
+                  a#starttour(href='#')
+                    | &#32; &#32;
+                    i.icon-question-sign
+      // Content Sections
       .container-fluid
         .row-fluid
           .span8
@@ -137,7 +165,7 @@ html(lang='en')
           #sidebar.span4
             ul.nav.nav-tabs
               li.active
-                a(href='#parameters', data-toggle='tab') Parameters
+                a#helpTourTwo(href='#parameters', data-toggle='tab') Parameters
                   | &#32; &#32;
                   i.icon-cogs
               li
@@ -229,3 +257,30 @@ html(lang='en')
     li#colorRampTemplate(role='presentation', style='display: none;')
       a(role='menuitem', tabindex='-1', href='#', onclick='return false;')
         img(role='menuitem', tabindex='-1', src='img/ramps/blue-to-orange.png')
+
+    // Bootstrap Tour
+    ol#helpTour(display-style='none')
+      li(data-target='#helpTourOne', data-placement='bottom', data-title='Welcome!') To get started select one model.
+      li(data-target='#helpTourTwo', data-placement='bottom', data-title='Configure') Next, toggle the model parameters. 
+      li(data-target='.leaflet-draw-draw-polygon', data-placement='bottom', data-title='Define') Draw a Polygon
+      li(data-target='#helpTourFour', data-placement='bottom', data-title='Review') Review the results summary.
+
+      script
+        $('#starttour').click(function (e) {
+          e.preventDefault();
+          $('#overlay').show();
+          $(this).BootJoyride({
+            'cookieMonster': false,           // true/false for whether cookies are used
+            'cookieName': 'myHomepageTour',  // choose your own cookie name
+            'cookieDomain': false,           // set to false or yoursite.com
+            'tipContent': '#helpTour',    // The ID of the <ol> used for content
+            'postRideCallback': endtour,      // A method to call once the tour closes
+            'postStepCallback': $.noop,      // A method to call after each step
+            'nextOnClose': false,            // If cookies are enabled, increment the current step on close
+            'debug': false
+          });  
+        });
+
+        function endtour() {
+          $('#overlay').hide();
+        }

@@ -32,6 +32,7 @@ var map = (function() {
 
     selected.addTo(m);
 
+    L.control.locate().addTo(m);
     m.lc = L.control.layers(baseLayers).addTo(m);
     return m;
 })()
@@ -387,4 +388,7 @@ $(document).ready(function() {
         return false;
     });
     setupSize();
+    $('#helpTour').joyride({
+
+    });
 });
