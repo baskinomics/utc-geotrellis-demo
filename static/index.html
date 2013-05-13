@@ -43,11 +43,11 @@
       
     </style>
     <!-- CSS References-->
-    <!-- Frontend Frameworks-->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/leaflet.css" rel="stylesheet">
     <link href="css/leaflet.draw.css" rel="stylesheet">
-    <link href="css/L.Control.Locate.css" rel="stylesheet"><!--[if lte IE 8]>
+    <link href="css/L.Control.Locate.css" rel="stylesheet">
+    <link href="css/l.geosearch.css" rel="stylesheet"><!--[if lte IE 8]>
     <link rel="stylesheet" href="../dist/leaflet.ie.css"><![endif]-->
     <!-- JQuery -->
     <link href="css/jquery-ui.css" rel="stylesheet">
@@ -57,6 +57,9 @@
     <script src="js/leaflet-src.js"></script>
     <script src="js/leaflet.draw.js"></script>
     <script src="js/L.Control.Locate.js"></script>
+    <script src="js/l.control.geosearch.js"></script>
+    <script src="js/l.geosearch.provider.openstreetmap.js"></script>
+    <!-- Other-->
     <script src="js/geojson.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
     <!-- JQuery Javascript-->
@@ -100,8 +103,10 @@
       <div class="container-fluid">
         <div class="row-fluid">
           <div class="span8">
-            <div id="map"><a id="clearButton" href="#" class="btn btn-inverse">Clear Polygon</a></div>
+            <!-- Map-->
+            <div id="map"></div>
             <div id="wrap">
+              <!-- Legend-->
               <div class="well pull-left">
                 <table>
                   <tbody class="legend">
@@ -115,19 +120,21 @@
                   </tbody>
                 </table>
               </div>
+              <!-- Map Options-->
               <div class="options">
+                <!-- Color Ramp Selection-->
                 <ul id="colorChooser" class="nav">
-                  <li class="dropdown"><a id="drop5" role="button" data-toggle="dropdown" href="#" class="btn dropdown-toggle">Color Ramps<i class="icon-angle-down"></i></a>
+                  <li class="dropup"><a id="drop5" role="button" data-toggle="dropdown" href="#" class="btn dropdown-toggle">Color Ramps<i class="icon-angle-down"></i></a>
                     <ul id="color-ramp-menu" role="menu" aria-labelledby="drop5" class="dropdown-menu"></ul>
                   </li>
-                </ul><!--/tabs -->
+                </ul><a id="clearButton" href="#" class="btn btn-inverse pull-right">Clear Polygon</a>
+                <!-- Opacity Slider-->
                 <div id="opacitySlider"><span class="slider-label">Opacity</span>
                   <div id="opacity-slider"></div>
                 </div>
               </div>
-            </div><!--
-            <end>wrap </end>-->
-          </div><!--/map-->
+            </div>
+          </div>
           <div id="sidebar" class="span4">
             <ul class="nav nav-tabs">
               <li class="active"><a id="helpTourTwo" href="#parameters" data-toggle="tab">
@@ -207,7 +214,7 @@
     <li id="colorRampTemplate" role="presentation" style="display: none;"><a role="menuitem" tabindex="-1" href="#" onclick="return false;"><img role="menuitem" tabindex="-1" src="img/ramps/blue-to-orange.png"></a></li>
     <!-- Bootstrap Tour-->
     <ol id="helpTour" display-style="none">
-      <li data-target="#helpTourOne" data-placement="bottom" data-title="Step One: Select">Begin by selecting a model.</li>
+      <li data-target="#helpTourOne" data-placement="bottom" data-title="Step One: Choose">Begin by selecting a model.</li>
       <li data-target="#helpTourTwo" data-placement="bottom" data-title="Step Two: Configure">Toggle the model parameters to match your values. </li>
       <li data-target="#map" data-placement="right" data-title="Step Three: Discover">Use the polygon control located on the left side of the map to draw a polygon and summerize the results.</li>
       <script>

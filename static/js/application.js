@@ -33,9 +33,13 @@ var map = (function() {
     selected.addTo(m);
     // Add geolocation control
     L.control.locate().addTo(m);
+    // Remove attribution bar
+    //m.attributionControl(false);
+    //L.control.attribution(false);
+
     m.lc = L.control.layers(baseLayers).addTo(m);
     return m;
-})()
+})();
 
 var weightedOverlay = (function() {
     var layers = [];
@@ -215,7 +219,7 @@ var summary = (function() {
                             var layerName = "Layer:";
                         }
 
-                        sdata.append($('<tr><td>10</td<td>' + layerName + '</td>' + '<td class="bold" style="text-align:right;">' + ls.total + '</td></tr>'));
+                        sdata.append($('<tr><td></td<td>' + layerName + '</td>' + '<td class="bold" style="text-align:right;">' + ls.total + '</td></tr>'));
                     });
 
                     sdata.append($('<tr class="warning"><td class="bold">Score:</td>' + '<td class="bold" style="text-align:right;">' + data.total + '</td></tr>'));
@@ -388,7 +392,4 @@ $(document).ready(function() {
         return false;
     });
     setupSize();
-    $('#helpTour').joyride({
-
-    });
 });

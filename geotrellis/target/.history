@@ -15,3 +15,5 @@ compile
 run
 compile
 ~ run
+run
+~ run

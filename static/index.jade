@@ -43,11 +43,11 @@ html(lang='en')
       }
 
     // CSS References
-    // Frontend Frameworks
     link(href='css/bootstrap.css', rel='stylesheet')
     link(href='css/leaflet.css', rel='stylesheet')
     link(href='css/leaflet.draw.css', rel='stylesheet')
     link(href='css/L.Control.Locate.css', rel='stylesheet')
+    link(href='css/l.geosearch.css', rel='stylesheet')
 
     //if lte IE 8
       link(rel='stylesheet', href='../dist/leaflet.ie.css')
@@ -61,6 +61,10 @@ html(lang='en')
     script(src='js/leaflet-src.js')
     script(src='js/leaflet.draw.js')
     script(src='js/L.Control.Locate.js')
+    script(src='js/l.control.geosearch.js')
+    script(src='js/l.geosearch.provider.openstreetmap.js')
+
+    // Other
     script(src='js/geojson.js')
     script(src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js')
     
@@ -132,9 +136,10 @@ html(lang='en')
       .container-fluid
         .row-fluid
           .span8
+            // Map
             #map
-              a#clearButton.btn.btn-inverse(href='#') Clear Polygon
             #wrap
+              // Legend
               .well.pull-left
                 table
                   tbody.legend
@@ -146,22 +151,21 @@ html(lang='en')
                         small Low
                       td(style='position: absolute; margin-left: -28px;')
                         small High
+              // Map Options
               .options
+                // Color Ramp Selection
                 ul#colorChooser.nav
-                  li.dropdown
+                  li.dropup
                     a#drop5.btn.dropdown-toggle(role='button', data-toggle='dropdown', href='#')
                       | Color Ramps
                       i.icon-angle-down
                     ul#color-ramp-menu.dropdown-menu(role='menu', aria-labelledby='drop5')
-                //
-                   /tabs 
+                a#clearButton.btn.btn-inverse.pull-right(href='#') Clear Polygon
+                // Opacity Slider
                 #opacitySlider
                   span.slider-label Opacity
                   #opacity-slider
-            //
-               end wrap 
-          //
-            /map
+
           #sidebar.span4
             ul.nav.nav-tabs
               li.active
@@ -226,11 +230,11 @@ html(lang='en')
           | For more information on the UTC project contact:
           br
           br
-          | Andy Carrol
+          | Andy Carroll
           br
           | GIS Manager
           br
-          | Center for Academix and Innovative Technologies
+          | Center for Academic and Innovative Technologies
           br
           br
           | University of Tennessee at Chattanooga
@@ -260,7 +264,7 @@ html(lang='en')
 
     // Bootstrap Tour
     ol#helpTour(display-style='none')
-      li(data-target='#helpTourOne', data-placement='bottom', data-title='Step One: Select') Begin by selecting a model.
+      li(data-target='#helpTourOne', data-placement='bottom', data-title='Step One: Choose') Begin by selecting a model.
       li(data-target='#helpTourTwo', data-placement='bottom', data-title='Step Two: Configure') Toggle the model parameters to match your values. 
       li(data-target='#map', data-placement='right', data-title='Step Three: Discover') Use the polygon control located on the left side of the map to draw a polygon and summerize the results.
 
