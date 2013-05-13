@@ -12,7 +12,7 @@ For more information on the UTC project contact:
 
 Andy Carroll <br/>
 GIS Manager <br/>
-Center for Academix and Innovative Technologies
+Center for Academic and Innovative Technologies
 
 University of Tennessee at Chattanooga <br/>
 615 McCallie Avenue <br/>
