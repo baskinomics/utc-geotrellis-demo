@@ -51,6 +51,7 @@
 @serifFontFamily:       Georgia, "Times New Roman", Times, serif;
 @monoFontFamily:        Monaco, Menlo, Consolas, "Courier New", monospace;
 @chatypeThinFontFamily:		"Chatype Thin", "Courier New", monospace;
+@chatypeRegularFontFamily:     "Chatype Regular", "Courier New", monospace;
 @chatypeBoldFontFamily:		"Chatype Bold", "Courier New", monospace;
 
 @font-face {
@@ -59,6 +60,16 @@
     src: url('font/chatypeb2.1thin-webfont.eot?#iefix') format('embedded-opentype'),
          url('font/chatypeb2.1thin-webfont.woff') format('woff'),
          url('font/chatypeb2.1thin-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Chatype Regular';
+    src: url('font/chatypeb2.1regular-webfont.eot');
+    src: url('font/chatypeb2.1regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/chatypeb2.1regular-webfont.woff') format('woff'),
+         url('font/chatypeb2.1regular-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -74,7 +85,7 @@
 }
 
 @baseFontSize:          14px;
-@baseFontFamily:        @chatypeThinFontFamily;
+@baseFontFamily:        @chatypeRegularFontFamily;
 @baseLineHeight:        20px;
 @altFontFamily:         @serifFontFamily;
 
