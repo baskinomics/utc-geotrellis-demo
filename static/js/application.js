@@ -1,7 +1,9 @@
+// Helper function to access layers
 var getLayer = function(url,attrib) {
     return L.tileLayer(url, { maxZoom: 18, attribution: attrib });
 };
 
+// Map of layers
 var Layers = {
     stamen: { 
         toner:  'http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png',   
@@ -16,8 +18,11 @@ var Layers = {
     }
 };
 
+// TODO
 var map = (function() {
+    // 
     var selected = getLayer(Layers.mapBox.azavea,Layers.mapBox.attrib);
+    //
     var baseLayers = {
 	"Azavea" : selected,
         "World Light" : getLayer(Layers.mapBox.worldLight,Layers.mapBox.attrib),
@@ -26,18 +31,19 @@ var map = (function() {
         "Toner" : getLayer(Layers.stamen.toner,Layers.stamen.attrib),
     };
 
+    // Create the map object 
     var m = L.map('map');
-
+    // Set the center and zoom level
     m.setView([34.76192255039478,-85.35140991210938], 9);
-
+    // 
     selected.addTo(m);
     // Add geolocation control
     L.control.locate().addTo(m);
-    // Remove attribution bar
-    //m.attributionControl(false);
-    //L.control.attribution(false);
-
+    // Remove Attribution
+    L.control.attribution(false); 
+    // TODO
     m.lc = L.control.layers(baseLayers).addTo(m);
+    // 
     return m;
 })();
 
@@ -101,8 +107,8 @@ var weightedOverlay = (function() {
                     layers: layerNames,
                     weights: getWeights(),
                     colorRamp: colorRamp,
-                    mask: geoJson,
-                    attribution: 'Azavea'
+                    mask: geoJson
+                    // attribution: 'Azavea'
                 })
 
                 WOLayer.setOpacity(opacity);

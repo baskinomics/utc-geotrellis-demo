@@ -153,6 +153,7 @@ html(lang='en')
                         small High
               // Map Options
               .options
+                a#clearButton.btn.btn-inverse(href='#') Clear Polygon
                 // Color Ramp Selection
                 ul#colorChooser.nav
                   li.dropup
@@ -160,7 +161,6 @@ html(lang='en')
                       | Color Ramps
                       i.icon-angle-down
                     ul#color-ramp-menu.dropdown-menu(role='menu', aria-labelledby='drop5')
-                a#clearButton.btn.btn-inverse.pull-right(href='#') Clear Polygon
                 // Opacity Slider
                 #opacitySlider
                   span.slider-label Opacity

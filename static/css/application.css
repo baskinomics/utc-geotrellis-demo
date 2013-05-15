@@ -134,10 +134,9 @@ span.weight input {
 }
 
 #clearButton {
-	position: absolute;
+	float: left;
+	margin-right: 1em;
 	z-index: 999;
-	left: 355px;
-	bottom: 19px;
 }
 
 #clearButton {
